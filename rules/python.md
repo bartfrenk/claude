@@ -34,7 +34,7 @@ Target Python 3.12+.
 
 ## I/O
 
-- Prefer async for network calls (e.g. `aiohttp`, `httpx.AsyncClient`).
+- Prefer async for network calls, using `aiohttp` unless the project uses something else.
 
 ## Tests
 
