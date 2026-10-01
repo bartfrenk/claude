@@ -11,6 +11,11 @@ Where a project configures different tools or conventions, the project wins.
 
 Target Python 3.12+.
 
+## Project layout
+
+- Use `uv` as the default package manager (`uv add`, `uv run`, `uv.lock`) unless the project uses something else.
+- Lay out code as packages under `src/` (e.g. `src/mypackage/`), not a flat top-level package or a `src/<name>/<name>` nesting.
+
 ## Style
 
 - Format with `black` and `isort` (isort `profile = "black"`) unless the project uses something else (e.g. `ruff format`); use the project's configured line length.
