@@ -1,0 +1,119 @@
+{
+    "editorMode": "vim",
+    "enabledPlugins": {
+        "emacs-skills@xenodium-emacs-skills": true,
+        "pyright-lsp@claude-plugins-official": true,
+        "superpowers@claude-plugins-official": false,
+        "typescript-lsp@claude-plugins-official": true
+    },
+    "extraKnownMarketplaces": {
+        "superpowers-marketplace": {
+            "source": {
+                "repo": "obra/superpowers-marketplace",
+                "source": "github"
+            }
+        },
+        "voltagent-subagents": {
+            "source": {
+                "repo": "VoltAgent/awesome-claude-code-subagents",
+                "source": "github"
+            }
+        },
+        "xenodium-emacs-skills": {
+            "source": {
+                "repo": "xenodium/emacs-skills",
+                "source": "github"
+            }
+        }
+    },
+    "hooks": {
+        "Notification": [
+            {
+                "hooks": [
+                    {
+                        "command": "notify-send -u normal 'Claude Code' 'Waiting for response...\n'",
+                        "type": "command"
+                    }
+                ],
+                "matcher": ""
+            },
+            {
+                "hooks": [
+                    {
+                        "command": "workmux set-window-status waiting",
+                        "type": "command"
+                    }
+                ],
+                "matcher": "permission_prompt|elicitation_dialog"
+            }
+        ],
+        "PostToolUse": [
+            {
+                "hooks": [
+                    {
+                        "command": "workmux set-window-status working",
+                        "type": "command"
+                    }
+                ]
+            }
+        ],
+        "SessionStart": [
+            {
+                "matcher": "",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "aven prime"
+                    }
+                ]
+            },
+            {
+                "hooks": [
+                    {
+                        "command": "workmux register-agent",
+                        "type": "command"
+                    }
+                ],
+                "matcher": "startup|resume|clear|fork"
+            }
+        ],
+        "Stop": [
+            {
+                "hooks": [
+                    {
+                        "command": "notify-send -u normal 'Claude Code' 'Done processing...\n'",
+                        "type": "command"
+                    }
+                ],
+                "matcher": ""
+            },
+            {
+                "hooks": [
+                    {
+                        "command": "workmux set-window-status done",
+                        "type": "command"
+                    }
+                ]
+            }
+        ],
+        "UserPromptSubmit": [
+            {
+                "hooks": [
+                    {
+                        "command": "workmux set-window-status working",
+                        "type": "command"
+                    }
+                ]
+            }
+        ]
+    },
+    "permissions": {
+        "defaultMode": "auto"
+    },
+    "preferredNotifChannel": "auto",
+    "statusLine": {
+        "command": "bash ~/.claude/statusline-command.sh",
+        "type": "command"
+    },
+    "tui": "fullscreen"
+}

@@ -1,0 +1,11 @@
+# Allowlist: track only hand-maintained config. Everything else in ~/.claude
+# is runtime state, caches, transcripts or credentials.
+/*
+!/.gitignore
+!/settings.json
+!/statusline-command.sh
+!/commands/
+!/rules/
+!/skills/
+# Synced from claude.ai, not edited locally
+/skills/synced/
