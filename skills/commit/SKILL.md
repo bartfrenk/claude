@@ -19,36 +19,12 @@ Create well-formatted git commits following conventional commit standards.
 
 ## Behavior
 1. Analyze staged changes with `git diff --staged`
-2. Generate a conventional commit message
-   - Create the commit with proper formatting
-   - Don't add co-author information to the commit message
-   - The optional body should consist of bullet points
+2. Read `FORMAT.md` (in this skill's directory) and generate a commit message
+   that follows it exactly, then create the commit
 3. `CLAUDE.md` and files under `.claude` may be committed, but never mixed into the
    same commit as other changes — always give them their own separate commit
 
-
-## Commit Format
-```
-<type>(<scope>): <description>
-
-[optional body]
-```
-The <description> should start with a capital letter.
-
-## Types
-- feat: New feature
-- fix: Bug fix
-- docs: Documentation changes
-- style: Code style changes
-- refactor: Code refactoring
-- test: Adding or modifying tests
-- chore: Maintenance tasks
-
-## Example Output
-```
-feat(auth): Add password reset functionality
-
-- Add forgot password form
-- Implement email verification flow
-- Add password reset endpoint
-```
+## Message Format
+[FORMAT.md](FORMAT.md) is the single source of truth for the commit message
+shape (format, types, and style rules). It's also read directly by magit's
+"c g" (generate commit) in Emacs — edit it there to keep both aligned.
